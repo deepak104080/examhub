@@ -30,7 +30,7 @@ function App() {
           <Route path='/examresult' element={<Examresult/>} />
           <Route path='/qslist' element={<QsList/>} />
           <Route path='/qsadd' element={<QsAdd/>} />
-          <Route path='/qsedit' element={<QsEdit/>} />
+          <Route path='/qsedit/:id' element={<QsEdit/>} />
           <Route path='/' element={<Home/>} />
         </Routes>
 

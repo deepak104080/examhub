@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import SecureHeader from '../shared/SecureHeader';
 import axios from 'axios';
 import SecureLeftPanel from '../shared/SecureLeftPanel';
 import SecureFooter from '../shared/SecureFooter';
+import { Link } from 'react-router-dom';
 
 
-
-const QsList = () => {
-  const [qsList, setqsList] = useState([1,2,3,4,5,6]);
+const QsList:FC = () => {
+  const [qsList, setqsList] = useState<any[]>([]);
 
   const callApiQsList = async () => {
     try{
@@ -24,7 +24,12 @@ const QsList = () => {
 
   useEffect(() => {
     callApiQsList();
-  })
+  }, [])
+
+
+  const qsdelete = () => {
+    console.log('delete qs');
+  }
 
   return ( 
     <>
@@ -32,7 +37,7 @@ const QsList = () => {
     <div className='row'>
       <SecureLeftPanel />
       <div className='col-10 bg-warning bg-opacity-10'>
-          <table className='table table-responsive'>
+          <table className='table table-striped'>
             <tr>
               <th>Sr No</th>
               <th>Questions</th>
@@ -42,27 +47,35 @@ const QsList = () => {
               <th>Answer 4</th>
               <th>Answer 5</th>
               <th>Correct Answer</th>
+              <th></th>
             </tr>
 
             {
               qsList && qsList.map((item, index) => (
                 <tr>
                   <td>{index}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{item.question}</td>
+                  <td>{item.answer1}</td>
+                  <td>{item.answer2}</td>
+                  <td>{item.answer3}</td>
+                  <td>{item.answer4}</td>
+                  <td>{item.answer5}</td>
+                  <td>{item.correctanswer}</td>
+                  <td>
+                    <Link to={`/qsedit/${item.qs_id}`} className='btn btn-warning'>Edit</Link>
+                    <button onClick={qsdelete} className='btn btn-danger'>Delete</button>
+                  </td>
                 </tr>
               ))
             }
           </table>
+          <br></br>
+          <Link to="/qsadd" className='btn btn-primary'>Add New Question</Link>
       </div>
 
-      <SecureFooter/>
+      
     </div>
-
+    <SecureFooter/>
 
     </>
   )
