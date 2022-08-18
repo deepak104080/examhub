@@ -38,6 +38,7 @@ const QsList:FC = () => {
       <SecureLeftPanel />
       <div className='col-10 bg-warning bg-opacity-10'>
           <table className='table table-striped'>
+            <thead>
             <tr>
               <th>Sr No</th>
               <th>Questions</th>
@@ -49,9 +50,11 @@ const QsList:FC = () => {
               <th>Correct Answer</th>
               <th></th>
             </tr>
-
+            </thead>
+            <tbody>
             {
               qsList && qsList.map((item, index) => (
+                
                 <tr>
                   <td>{index}</td>
                   <td>{item.question}</td>
@@ -68,6 +71,7 @@ const QsList:FC = () => {
                 </tr>
               ))
             }
+            </tbody>
           </table>
           <br></br>
           <Link to="/qsadd" className='btn btn-primary'>Add New Question</Link>
