@@ -46,13 +46,13 @@ const Dashboard = () => {
             <thead>
             <tr>
               <th>Sr No</th>
-              <th>Questions</th>
-              <th>Answer 1</th>
-              <th>Answer 2</th>
-              <th>Answer 3</th>
-              <th>Answer 4</th>
-              <th>Answer 5</th>
-              <th>Correct Answer</th>
+              <th>-</th>
+              <th>-</th>
+              <th>-</th>
+              <th>-</th>
+              <th>-</th>
+              <th>-</th>
+              <th>-</th>
               <th></th>
             </tr>
             </thead>
